@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Job</title>
+    <style>
+        #container{
+            padding: 20px;
+            background-color: coral;
+        }
+        #container h3{
+            margin-left:468px;
+        }
+        #job p{
+            margin-left: 15px;
+        }
+        #otherTravelers p{
+            margin-left: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h3><a href="/logOut">Log Out</a> | <a href="/travels">Back</a></h3>
+        <div id="job">
+            <h1>{{job.job}}</h1>
+            <p>Planned by: {{job.planned_trip.first_name}} {{job.planned_trip.last_name}}</p>
+            <p>Description: {{job.plan}}</p>
+            <p>Travel Date From: {{job.travel_date_from}}</p>
+            <p>Travel Date To: {{job.travel_date_to}}</p>
+        </div>
+        <div id="otherTravelers">
+            <h1>Other Users Joing the Trip:</h1>
+            {% for userObj in job.travelers.all %}
+            {% if userObj.id != job.planned_trip.id %}
+                    <p>{{userObj.first_name}} {{userObj.last_name}}</p>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Web Page</title>
+    <style>
+        #container{
+            display: flex;
+            padding: 20px;
+            background-color:cornflowerblue;
+            border-radius: 10px;
+        }
+        #registration{
+            display: inline-block;
+        }
+        #login{
+            display: inline-block;
+            margin-left: 200px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Trip Buddy</h1>
+    <div id="container">
+        <div id="registration">
+            <h1>Register</h1>
+            {% if messages %}
+                {% for message in messages %}
+                <p style="color: red;">{{message}}</p>
+                {% endfor %}
+            {% endif %}
+            <form action="/register" method="post">
+                {% csrf_token %}
+                <p>First Name: <input type="text" name="fname"></p>
+                <p>Last Name: <input type="text" name="lname"></p>
+                <p>Email: <input type="text" name="email"></p>
+                <p>Password: <input type="Password" name="pw" id=""></p>
+                <p>Confirm Password: <input type="Password" name="cpw" id=""></p>
+                <p><input type="submit" value="Register"></p>
+            </form>
+        </div>
+        <div id="login">
+            <h1>Login</h1>
+            <form action="/login" method="post">
+                {% csrf_token %}
+                <p>Email: <input type="text" name="email"></p>
+                <p>Password: <input type="Password" name="pw" id=""></p>
+                <input type="submit" value="Log In">
+            </form>
+        </div>
+    </div>
+</body>
+</html>

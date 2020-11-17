@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add A Job</title>
+    <style>
+        #container{
+            padding: 20px;
+            background-color: darkseagreen;
+        }
+        #container p{
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h2><a href="/travels">Home</a>|<a href="/logOut">Log Out</a></h2>
+        <h1>Create a new wishlist item</h1>
+        {% if messages %}
+        {% for message in messages %}
+        <p style="color: red;">{{message}}</p>
+        {% endfor %}
+        {% endif %}
+        <form action="/add" method="post">
+            {% csrf_token %}
+            <p>Destination: <input type="text" name="Job"></p>
+            <p>Description: </p>
+            <p><textarea name="Plan" id="" cols="30" rows="5"></textarea></p>
+            <p>Travel Date From: <input type="date" name="Start" id=""></p>
+            <p>Travel Date To: <input type="date" name="End" id=""></p>
+            <p><input type="submit" value="Submit"></p>
+        </form>
+    </div>
+</body>
+</html>
